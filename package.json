@@ -7,6 +7,9 @@
     "import": "./dist/mjs/index.js",
     "require": "./dist/cjs/index.js"
   },
+  "repository": {
+    "url": "https://github.com/michaeldgraham/neo4j-graphql-tag.git"
+  },
   "scripts": {
     "build-esm": "tsc -p tsconfig.json",
     "build-cjs": "tsc -p tsconfig-cjs.json"
