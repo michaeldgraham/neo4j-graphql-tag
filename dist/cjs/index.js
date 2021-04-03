@@ -17,4 +17,4 @@ const cypher = (statement, ...substitutions) => {
     composed.push(formatLiteral(literals[literals.length - 1]));
     return `statement: """${composed.join('').trim()}"""`;
 };
-exports.default = cypher;
+module.exports = cypher;

@@ -1,7 +1,7 @@
 {
   "name": "neo4j-graphql-tag",
   "version": "1.0.0",
-  "description": "A template literal for GraphQL @cypher directives used within gql template literals",
+  "description": "A template literal for GraphQL @cypher directives",
   "main": "./dist/cjs/index.js",
   "exports": {
     "import": "./dist/mjs/index.js",
