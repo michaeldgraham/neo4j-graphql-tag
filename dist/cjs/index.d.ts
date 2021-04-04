@@ -1,2 +1,2 @@
-export default cypher;
-declare function cypher(statement: any, ...substitutions: any[]): string;
+export default cql;
+declare function cql(statement: any, ...substitutions: any[]): string;

@@ -1,4 +1,5 @@
-const cypher = (statement, ...substitutions) => {
+const cql = (statement, ...substitutions) => {
+    const BLOCK_QUOTE = `"""`;
     // Get the array of string literals
     const literals = statement.raw;
     // Add each substitution inbetween all
@@ -6,13 +7,18 @@ const cypher = (statement, ...substitutions) => {
     const composed = substitutions.reduce((composed, substitution, index) => {
         // Format and add the string literal
         composed.push(formatLiteral(literals[index]));
-        // Format and add the substution proceeding it
-        if (substitution)
-            composed.push(`\n${substitution.trim()}\n`);
+        if (substitution) {
+            substitution = substitution.trim();
+            if (substitution.startsWith(BLOCK_QUOTE) && substitution.endsWith(BLOCK_QUOTE)) {
+                // Removes GraphQL block quotes from nested compilation
+                substitution = substitution.substr(3).slice(0, -3);
+            }
+            composed.push(`\n${substitution}\n`);
+        }
         return composed;
     }, []);
     // Format and add the last literal
     composed.push(formatLiteral(literals[literals.length - 1]));
-    return `"""${composed.join('').trim()}"""`;
+    return `${BLOCK_QUOTE}${composed.join('').trim()}${BLOCK_QUOTE}`;
 };
-export default cypher;
+export default cql;
