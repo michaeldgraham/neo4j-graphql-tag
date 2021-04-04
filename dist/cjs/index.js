@@ -15,6 +15,6 @@ const cypher = (statement, ...substitutions) => {
     }, []);
     // Format and add the last literal
     composed.push(formatLiteral(literals[literals.length - 1]));
-    return composed.join('').trim();
+    return `"""${composed.join('').trim()}"""`;
 };
 module.exports = cypher;
